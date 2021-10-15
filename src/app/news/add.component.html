@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    Add News
+                </div>    
+            </div>
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title"
+                    [(ngModel)]="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="news">News</label>
+                    <input type="text" class="form-control" id="news" name="news"
+                    [(ngModel)]="news" required>
+                </div>
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

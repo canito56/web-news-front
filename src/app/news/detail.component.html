@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row mt-5" *ngIf="news">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="width: 25rem;">
+                <div class="card-header text-center">
+                    Detail News
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Id: </b>{{news.id_news}}</li>
+                    <li class="list-group-item"><b>Title: </b>{{news.title}}</li>
+                    <li class="list-group-item"><b>News: </b>{{news.snews}}</li>
+                    <li class="list-group-item"><b>Date: </b>{{news.date_created|date:"dd/MM/yyyy"}}</li>
+                    <li class="list-group-item"><b>User: </b>{{news.user.first_name + ' ' + news.user.last_name}}</li>
+                </ul>
+                <div class="card-footer">
+                    <button class="btn btn-outline-primary btn-block" (click)="back()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Back
+                    </button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

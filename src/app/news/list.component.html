@@ -1,0 +1,57 @@
+<div>
+  <mat-form-field class="btn btn-dark">
+    <input matInput (keyup)="filter($event.target.value)" [placeholder]="placeholders.search">  
+  </mat-form-field>    
+</div>
+
+<div class="mat-elevation-z8">
+
+  <table class="table table-dark" mat-table [dataSource]="dataSource" matSort>
+    
+    <ng-container matColumnDef="id_news">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let news"> {{news.id_news}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+      <td mat-cell *matCellDef="let news"> {{news.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="snews">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> News </th>
+      <td mat-cell *matCellDef="let news"> {{news.snews}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let news"> {{news.date_created|date:"dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef> User </th>
+      <td mat-cell *matCellDef="let news"> {{news.user.first_name + ' ' + news.user.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="see-edit-delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let news">
+        <button class="btn btn-outline-primary" routerLink="/detail/{{news.id_news}}"><i class="far fa-eye"></i></button>
+        <button class="btn btn-outline-warning" routerLink="/edit/{{news.id_news}}"><i class="far fa-edit"></i></button>
+        <button class="btn btn-outline-danger" (click)="onDelete(news.id_news,news.title)"><i class="far fa-trash-alt"></i></button>
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</div>
+
+<mat-paginator  [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                [length]="cant" (page)="Paginator($event)">
+</mat-paginator>
+  
