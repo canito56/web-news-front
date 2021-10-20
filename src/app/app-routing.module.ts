@@ -8,16 +8,17 @@ import { CommonModule } from '@angular/common';
 import { SigninComponent } from './news/signin.component';
 import { SignupComponent } from './news/signup.component';
 import { ChgpwdComponent } from './news/chgpwd.component';
+import { NewsGuard } from './news.guard';
 
 
 const routes: Routes = [
   {path: '', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'chgpwd', component: ChgpwdComponent},
-  {path: 'list', component: ListComponent},
-  {path: 'detail/:id', component: DetailComponent},
-  {path: 'add/:id', component: AddComponent},
-  {path: 'edit/:id', component: EditComponent},
+  {path: 'chgpwd', component: ChgpwdComponent, canActivate: [NewsGuard]},
+  {path: 'list', component: ListComponent, canActivate: [NewsGuard]},
+  {path: 'detail/:id', component: DetailComponent, canActivate: [NewsGuard]},
+  {path: 'add/:id', component: AddComponent, canActivate: [NewsGuard]},
+  {path: 'edit/:id', component: EditComponent, canActivate: [NewsGuard]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

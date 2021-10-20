@@ -20,16 +20,16 @@ export class NewsService {
     return this.httpClient.get<News>(this.newsURL + `detail/${id}`)
   }
 
-  public add(news: News): Observable<any> {
-    return this.httpClient.post<any>(this.newsURL + 'add', news)
+  public add(news: News): Observable<News> {
+    return this.httpClient.post<News>(this.newsURL + 'add', news)
   }
 
-  public update(id: number, news: News): Observable<any> {
-    return this.httpClient.put<any>(this.newsURL + `update/${id}`, news)
+  public update(id: number, news: News): Observable<News> {
+    return this.httpClient.put<News>(this.newsURL + `update/${id}`, news)
   }
 
-  public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.newsURL + `delete/${id}`);
+  public delete(id: number): Observable<number> {
+    return this.httpClient.delete<number>(this.newsURL + `delete/${id}`);
   }
 
   public listPageable(pag: number, size: number) {

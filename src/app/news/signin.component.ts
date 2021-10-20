@@ -23,6 +23,7 @@ export class SigninComponent implements OnInit {
     private comunicationService: ComunicationService) { }
 
   ngOnInit(): void {
+    localStorage.setItem('logUser', '')
     this.comunicationService.sendMsgObservable.subscribe(user => {
       this.user = user
     })
@@ -31,6 +32,7 @@ export class SigninComponent implements OnInit {
   onSignin() {
     const localUser = new User(this.suser, this.pwd, '', '', '')
     this.userService.signin(localUser).subscribe(data => {
+      localStorage.setItem('logUser', data.suser)  
       this.user = data
       this.notifyService.showSuccess('User ' + this.user.suser + ' successfully logged in', '')
       this.comunicationService.sendMsg(this.user)

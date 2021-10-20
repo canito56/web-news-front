@@ -12,12 +12,12 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public signin(user: User): Observable<any> {
-    return this.httpClient.post<any>(this.userURL + 'signin', user)
+  public signin(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.userURL + 'signin', user)
   } 
 
-  public signup(user: User): Observable<any> {
-    return this.httpClient.post<any>(this.userURL + 'signup', user)
+  public signup(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.userURL + 'signup', user)
   } 
 
   public chgpwd(user: string, psold: string, psnew1: string, psnew2: string): Observable<any> {
