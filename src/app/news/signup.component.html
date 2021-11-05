@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email"
+                    <input type="email" class="form-control" id="email" name="email"
                     [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" email #emailref="ngModel" required>
                     <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
                         <div [hidden]="!emailref.errors?.pattern">
